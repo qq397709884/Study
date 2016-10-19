@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="p" namespace="/test" extends="struts-default">
+		<interceptors>
+			<interceptor name="permission" class="com.struts.interceptor.PermissionInterceptor"/>
+			<interceptor-stack name="permissionStack">
+				<interceptor-ref name="defaultStack"/><!-- 注意位置 -->
+				<interceptor-ref name="permission" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 每个包只能指定一个默认拦截器，该拦截器应用于该包下的所有action -->
+		<default-interceptor-ref name="permissionStack" />
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+		<action name="home1" class="com.struts.action.HomeAction" method="execute">
+			<result name="success">/home.jsp</result>
+		</action>
+		<action name="home2" class="com.struts.action.HomeAction" method="execute">
+			<!-- 为该action显示指定某个拦截器，则默认拦截器不起作用 -->
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/home.jsp</result>
+		</action>
+    </package>
+</struts>

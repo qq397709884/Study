@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="p" namespace="/test" extends="struts-default">
+        <action name="hello" class="com.struts.action.HelloAction" method="execute">
+        	<!-- 依赖注入，其中Action中的属性必须提供set方法，message为属性名，hello world为属性值 -->
+        	<param name="message">hello world</param>
+			<result name="success">/WEB-INF/page/hello.jsp</result>
+        </action>
+    </package> 
+</struts>

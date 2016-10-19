@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 常量配置：指定Struts2处理的请求后缀，默认值是action，如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号隔开 -->
+	<constant name="struts.action.extension" value="do,action" />
+	<!-- 包含配置 -->
+	<include file="struts1.xml" />
+</struts>
