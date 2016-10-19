@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                    
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+        
+    <!-- 使用<context:annotation-config/>隐式地向 Spring容器注册BeanPostProcessor -->    
+    <context:annotation-config/>
+    <!-- 使用@Autowired注解，必须事先在Spring容器中声明AutowiredAnnotationBeanPostProcessor的Bean -->
+    <!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" /> -->
+    <!-- 使用@Resource、@PostConstruct、@PreDestroy等注解，必须事先在Spring容器中声明CommonAnnotationBeanPostProcessor的Bean -->
+    <!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" /> --> 
+	<bean id="personDao" class="com.spring.dao.impl.PersonDaoBean"></bean>
+	<bean id="personService1" class="com.spring.service.impl.PersonServiceBean1"></bean>
+	<bean id="personService2" class="com.spring.service.impl.PersonServiceBean2"></bean>
+	<bean id="personService3" class="com.spring.service.impl.PersonServiceBean3"></bean>
+	<bean id="personService4" class="com.spring.service.impl.PersonServiceBean4"></bean>
+	<bean id="personService5" class="com.spring.service.impl.PersonServiceBean5"></bean>
+	<bean id="personService6" class="com.spring.service.impl.PersonServiceBean6"></bean>
+</beans>

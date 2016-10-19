@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 
+		scope="singleton"，单例模式，（默认）容器只会创建该bean定义的唯一实例。
+		scope="prototype"，原始模型模式，每次从容器获取的bean都是新的实例。
+	-->
+	<!-- 
+		lazy-init="false"，立退加载，表示spring启动时，立刻实例化bean。
+		lazy-init="true"，延迟加载，表示spring启动时，不会立刻实例化bean，而是在第一次向容器通过getBean索取bean时才实例化的。
+	 -->
+	 <!-- 
+	 	init-method="init"，指定初始化bean之后调用的方法。
+	 	destroy-method="destory"，指定销毁bean之前调用的方法。
+	 -->
+	<bean id="personService" class="com.spring.service.impl.PersonServiceBean" 
+		scope="prototype" 
+		lazy-init="false" 
+		init-method="init" destroy-method="destory">
+	</bean>
+</beans>

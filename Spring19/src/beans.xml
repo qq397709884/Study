@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:aop="http://www.springframework.org/schema/aop"      
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	
+	<aop:config>
+   		<aop:aspect id="asp" ref="myInterceptor">
+	   		<aop:pointcut id="qrd" expression="execution(* com.spring.service.impl.PersonServiceBean.*(..))"/>
+	   		<aop:before pointcut-ref="qrd" method="qztz"/>
+	   		<aop:after-returning pointcut-ref="qrd" method="hztz"/>
+		 	<aop:after pointcut-ref="qrd" method="zztz"/>
+		 	<aop:after-throwing pointcut-ref="qrd" method="yctz"/>
+		 	<aop:around pointcut-ref="qrd" method="hrtz"/>
+    	</aop:aspect>
+    </aop:config>
+	<bean id="myInterceptor" class="com.spring.interceptor.MyInterceptor"></bean>
+	<bean id="personServiceBean" class="com.spring.service.impl.PersonServiceBean"></bean>
+</beans>

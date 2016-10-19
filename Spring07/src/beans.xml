@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="personDao1" class="com.spring.dao.impl.PersonDaoBean"></bean>
+	<bean id="personService1" class="com.spring.service.impl.PersonServiceBean">
+		<!-- 
+			依赖注入：使用属性set方法注入
+			1）name的值personDao是PersonServiceBean类中的属性
+			2）ref的值personDao1是bean的id值 
+		-->
+		<property name="personDao" ref="personDao1"></property>
+	</bean>
+	<bean id="personService2" class="com.spring.service.impl.PersonServiceBean">
+		<property name="personDao">
+			<!-- 使用内部bean依赖注入，该内部bean不能被其他bean使用 -->
+			<bean class="com.spring.dao.impl.PersonDaoBean"></bean>
+		</property>
+		<property name="name" value="hwd" />
+	   	<property name="sets">
+	   		<set>
+	   			<value>第一个</value>
+	   			<value>第二个</value>
+	   			<value>第三个</value>
+	   		</set>
+	   	</property>
+	   	<property name="lists">
+	   		<list>
+	   			<value>第一个list元素</value>
+	   			<value>第二个list元素</value>
+	   			<value>第三个list元素</value>
+	   		</list>
+	   	</property>
+	   	<property name="properties">
+	   		<props>
+	   			<prop key="key1">value1</prop>
+	   			<prop key="key2">value2</prop>
+	   			<prop key="key3">value3</prop>
+	   		</props>
+	   	</property>
+	   	<property name="maps">
+	   		<map>
+	   			<entry key="key-1" value="value-1"/>
+	   			<entry key="key-2" value="value-2"/>
+	   			<entry key="key-3" value="value-3"/>
+	   		</map>
+	   	</property>
+	</bean>
+</beans>
